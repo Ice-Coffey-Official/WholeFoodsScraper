@@ -94,8 +94,8 @@ for j in tqdm(range(len(locations))):
 
     try:
         coords = soup.find("script", { "type" : "application/ld+json"}).text
-        latitude = coords.split('"latitude": "')[-1][:11]
-        longitude = coords.split('"longitude": "')[-1][:11]
+        latitude = coords.split('"latitude": "')[-1][:11].strip().strip(',').strip('"')
+        longitude = coords.split('"longitude": "')[-1][:11].strip().strip(',').strip('"')
     except Exception as e:
         latitude = ''
         longitude = ''
